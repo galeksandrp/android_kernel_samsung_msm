@@ -737,7 +737,7 @@ static DEVICE_ATTR(lcd_power, 0660,						//sm.kim: give write permission for app
                         s6d16a0x_store_lcd_power);
 #endif
 
-static int __init s6d16a0x_probe(struct platform_device *pdev)
+static int __devinit s6d16a0x_probe(struct platform_device *pdev)
 {
 	int err = 0;
 	int ret = 0;
@@ -951,5 +951,3 @@ static irqreturn_t s6d16a0x_esd_irq_handler(int irq, void *handle)
 }
 #endif
 module_init(lcdc_s6d16a0x_panel_init);
-
-
