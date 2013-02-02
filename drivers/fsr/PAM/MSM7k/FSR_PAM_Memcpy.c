@@ -1,5 +1,5 @@
 /**
- *   @mainpage   Flex Sector Remapper : RFS_3.0.0_b022-Nestle_1.0.0_b014-BTFS_1.0.1_b024-LinuStoreIII_1.2.0_b029-FSR_1.2.1_b125_RC
+ *   @mainpage   Flex Sector Remapper : LinuStoreIII_1.2.0_b035-FSR_1.2.1p1_b129_RC
  *
  *   @section Intro
  *       Flash Translation Layer for Flex-OneNAND and OneNAND
