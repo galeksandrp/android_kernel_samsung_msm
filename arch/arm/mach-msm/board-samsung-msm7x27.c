@@ -711,7 +711,7 @@ static int msm_fb_lcdc_config(int on) {
 	return 0;
 }
 
-static int gpio_array_num[] = {
+int gpio_array_num[] = {
 	GPIO_OUT_132, /* spi_clk */
 	GPIO_OUT_131, /* spi_cs  */
 	GPIO_OUT_103, /* spi_sdi */
@@ -720,6 +720,7 @@ static int gpio_array_num[] = {
 #endif
 	GPIO_OUT_101,  /* lcd_reset */
 };
+EXPORT_SYMBOL(gpio_array_num); // 20100915
 
 static void lcdc_gordon_gpio_init(void) {
 	if (gpio_request(GPIO_OUT_132, "spi_clk"))
@@ -837,7 +838,7 @@ static struct platform_device lcdc_s6d04m0_panel_device = {
 #endif
 
 #ifdef CONFIG_FB_MSM_LCDC_TA8566_WQVGA
-static void lcdc_ta8566_config_gpios(int enable) {
+void lcdc_ta8566_config_gpios(int enable) {
 	config_lcdc_gpio_table(lcdc_gpio_table,
 		ARRAY_SIZE(lcdc_gpio_table), enable);
 }
