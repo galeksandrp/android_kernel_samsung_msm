@@ -701,6 +701,8 @@ static struct msm_tsif_platform_data tsif_platform_data = {
 #endif
 #ifdef CONFIG_MACH_COOPER
 #define GPIO_OUT_102    102
+#else
+#define GPIO_OUT_122    122
 #endif
 #define GPIO_OUT_101    101
 
@@ -717,6 +719,8 @@ int gpio_array_num[] = {
 	GPIO_OUT_103, /* spi_sdi */
 #ifdef CONFIG_MACH_COOPER
 	GPIO_OUT_102, /* spi_sdo */
+#else
+	GPIO_OUT_122, /* lcd_en */
 #endif
 	GPIO_OUT_101,  /* lcd_reset */
 };
