@@ -59,11 +59,10 @@
 #include <linux/clk.h>
 #include <mach/gpio.h>
 #include "msm_fb.h"
-//#include <mach/regulator.h>
+#include <linux/regulator/consumer.h>
 #include "lcdc_s6d_backlight.h"
 
 #include <linux/module.h>
-#include <linux/regulator/consumer.h>
 
 #define LCDC_DEBUG
 

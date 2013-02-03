@@ -90,6 +90,13 @@ int tsp_reset( void )
 		disable_irq(ts_global->client->irq);
 	}
 
+	ret = regulator_set_voltage(regulator_touch, 2600000, 2600000);
+	if (ret) {
+		printk(KERN_ERR "%s: regulator set level failed (%d)\n",
+				__func__, ret);
+		return -EIO;
+	}
+
 	ret = regulator_disable(regulator_touch);
 	if (ret) {
 		printk(KERN_ERR "%s: regulator enable failed (%d)\n",
@@ -116,6 +123,13 @@ int tsp_reset( void )
 	gpio_set_value( TSP_SCL , 1 ); 
 	gpio_set_value( TSP_SDA , 1 ); 
 	gpio_set_value( TSP_INT , 1 ); 
+
+	ret = regulator_set_voltage(regulator_touch, 2600000, 2600000);
+	if (ret) {
+		printk(KERN_ERR "%s: regulator set level failed (%d)\n",
+				__func__, ret);
+		return -EIO;
+	}
 
 	ret = regulator_enable(regulator_touch);
 	if (ret) {
@@ -395,6 +409,7 @@ static int synaptics_ts_probe(
 	printk("[TSP] %s, %d\n", __func__, __LINE__ );
 
 	regulator_touch = regulator_get(NULL, "maxldo06");
+
 	ret = regulator_set_voltage(regulator_touch, 2600000, 2600000);
 	if (ret) {
 		printk(KERN_ERR "%s: regulator set level failed (%d)\n",
@@ -551,6 +566,13 @@ static int synaptics_ts_suspend(struct i2c_client *client, pm_message_t mesg)
 
 	msleep(20);
 
+	ret = regulator_set_voltage(regulator_touch, 2600000, 2600000);
+	if (ret) {
+		printk(KERN_ERR "%s: regulator set level failed (%d)\n",
+				__func__, ret);
+		return -EIO;
+	}
+
 	ret = regulator_disable(regulator_touch);
 	if (ret) {
 		printk(KERN_ERR "%s: regulator enable failed (%d)\n",
@@ -577,6 +599,13 @@ static int synaptics_ts_resume(struct i2c_client *client)
 	gpio_set_value( TSP_INT , 1 ); 
 
 	regulator_touch = regulator_get(NULL, "maxldo06");
+
+	ret = regulator_set_voltage(regulator_touch, 2600000, 2600000);
+	if (ret) {
+		printk(KERN_ERR "%s: regulator set level failed (%d)\n",
+				__func__, ret);
+		return -EIO;
+	}
 
 	ret = regulator_enable(regulator_touch);
 	if (ret) {
